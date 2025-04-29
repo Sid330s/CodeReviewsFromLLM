@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>next-greater-element-ii</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 40px auto;
+      max-width: 800px;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 0 20px;
+    }
+    a {
+      color: #4FC3F7;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    pre {
+      border-radius: 8px;
+      overflow: auto;
+    }
+    .card {
+      background: #2d2d2d;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<h1>💡 Solution: Next Greater Element Ii</h1>
+<pre><code class="language-cpp">class Solution {
+public:
+    vector&lt;int&gt; nextGreaterElements(vector&lt;int&gt;&amp; nums) {
+        /*
+                1 2 3 4 3
+
+
+                1. 2
+                2. 3
+                3  4
+                4. -1
+                3. 
+
+                ---------------------
+                travel reverse , start from largest element
+
+                -1
+
+                4,3
+
+                1,2,3,4,3
+
+                2,3,4,-1,4
+
+        */
+
+        int n = nums.size();
+        vector&lt;int&gt; res(n, -1);
+        stack&lt;int&gt; st;
+
+
+        int maxIdx = 0;
+        for (int i = 1; i &lt; n; ++i) {
+            if (nums[i] &gt; nums[maxIdx]) {
+                maxIdx = i;
+            }
+        }
+
+        st.push(nums[maxIdx]);
+
+
+        for (int k = 1; k &lt;= n; ++k) {
+            int i = (maxIdx - k + n) % n; // reverse circular index
+            while (!st.empty() &amp;&amp; st.top() &lt;= nums[i]) {
+                st.pop();
+            }
+            if (!st.empty()) {
+                res[i] = st.top();
+            }
+            st.push(nums[i]);
+        }
+
+        return res;
+
+    }
+};</code></pre><p><a href="index.html">⬅ Back to index</a></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+</body>
+</html>
