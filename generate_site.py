@@ -57,21 +57,21 @@ HEADER = '''
       font-size: 1.2em;
       font-weight: bold;
     }}
-    .card-header {
+    .card-header {{
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
-    }
-    .icon {
+    }}
+    .icon {{
       font-size: 1.2em;
-    }
-    .icon.ok {
+    }}
+    .icon.ok {{
       color: #4CAF50;
-    }
-    .icon.bad {
+    }}
+    .icon.bad {{
       color: #f44336;
-    }
+    }}
   </style>
 </head>
 <body>

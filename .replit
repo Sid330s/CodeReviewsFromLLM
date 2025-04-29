@@ -3,7 +3,7 @@ modules = ["python-base-3.13"]
 channel = "stable-24_05"
 
 [workflows]
-runButton = "Create Files"
+runButton = "generate_site.py"
 
 [[workflows.workflow]]
 name = "Create Files"
