@@ -25,6 +25,7 @@ HEADER = '''
   <meta charset="UTF-8">
   <title>{title}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {{
       font-family: 'Segoe UI', sans-serif;
@@ -56,6 +57,21 @@ HEADER = '''
       font-size: 1.2em;
       font-weight: bold;
     }}
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .icon {
+      font-size: 1.2em;
+    }
+    .icon.ok {
+      color: #4CAF50;
+    }
+    .icon.bad {
+      color: #f44336;
+    }
   </style>
 </head>
 <body>
