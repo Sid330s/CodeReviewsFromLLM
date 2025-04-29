@@ -1,0 +1,24 @@
+modules = ["python-base-3.13"]
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Create Files"
+
+[[workflows.workflow]]
+name = "Create Files"
+mode = "sequential"
+author = 34709945
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 create_files.py"
+
+[[workflows.workflow]]
+name = "generate_site.py"
+mode = "sequential"
+author = 34709945
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 generate_site.py"
