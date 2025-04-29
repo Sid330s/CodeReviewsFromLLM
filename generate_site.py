@@ -71,16 +71,22 @@ FOOTER = '''
 
 # Generate index.html
 with open(os.path.join(OUTPUT_DIR, 'index.html'), 'w') as f:
-    f.write(HEADER.format(title="LeetCode Solutions", header="📘 LeetCode Problem List"))
-    for slug, url in problems:
-        f.write(f'''
-        <div class="card">
-            <div class="title">{slug.replace('-', ' ').title()}</div>
-            <a href="{url}" target="_blank">LeetCode Problem</a> |
-            <a href="{slug}.html">View Solution</a>
-        </div>
-        ''')
-    f.write(FOOTER)
+  f.write(HEADER.format(title="LeetCode Solutions", header="📘 LeetCode Problem List"))
+  for slug, url in problems:
+      cpp_path = os.path.join(SOLUTION_DIR, f"{slug}.cpp")
+      has_solution = os.path.exists(cpp_path) and sum(1 for _ in open(cpp_path)) > 5
+      icon_class = "fa-circle-check ok" if has_solution else "fa-circle-xmark bad"
+      f.write(f'''
+      <div class="card">
+          <div class="card-header">
+              <div class="title">{slug.replace('-', ' ').title()}</div>
+              <div class="icon"><i class="fa-solid {icon_class}"></i></div>
+          </div>
+          <a href="{url}" target="_blank">LeetCode Problem</a> |
+          <a href="{slug}.html">View Solution</a>
+      </div>
+      ''')
+  f.write(FOOTER)
 
 # Generate individual solution pages
 for slug, _ in problems:
