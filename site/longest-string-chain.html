@@ -56,8 +56,32 @@
 </head>
 <body>
 <h1>💡 Solution: Longest String Chain</h1>
-<pre><code class="language-cpp">// Solution for longest-string-chain
-</code></pre><p><a href="index.html">⬅ Back to index</a></p>
+<pre><code class="language-cpp">class Solution {
+public:
+    int longestStrChain(vector&lt;string&gt;&amp; words) {
+
+        sort(words.begin(), words.end(), [](const string &amp;a, const string &amp;b) {
+            return a.length() &lt; b.length();
+        });
+
+        unordered_map&lt;string, int&gt; dp;
+        int maxLen = 1;
+
+        for (const string &amp;word : words) {
+            int best = 0;
+
+            for (int i = 0; i &lt; word.size(); ++i) {
+                string prev = word.substr(0, i) + word.substr(i + 1);
+                best = max(best, dp[prev] + 1);
+            }
+
+            dp[word] = best;
+            maxLen = max(maxLen, best);
+        }
+
+        return maxLen;
+    }
+};</code></pre><p><a href="index.html">⬅ Back to index</a></p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
 </body>
