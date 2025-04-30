@@ -4,7 +4,7 @@ import html
 
 SOLUTION_DIR = 'solution'
 LEETCODE_FILE = 'leetcode.txt'
-OUTPUT_DIR = 'site'
+OUTPUT_DIR = 'docs'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Load problem URLs
@@ -118,4 +118,4 @@ for slug, _ in problems:
             sol_file.write('<p><a href="index.html">⬅ Back to index</a></p>')
             sol_file.write(FOOTER)
 
-print("✅ Site generated in the 'site/' folder.")
+print("✅ Site generated in the 'docs/' folder.")
